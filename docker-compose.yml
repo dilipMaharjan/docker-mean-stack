@@ -1,0 +1,18 @@
+version: '3.0'
+#services are the containers
+services:
+  angular: #name of a service
+    build: angular #directory of Dockerfile
+    ports:
+      - "4200:4200" #port mapping
+  express:
+    build: express
+    ports:
+      - "3000:3000"
+    links:
+      - db #link this service to database
+  db:
+    image: mongo #image to build container from
+    ports:
+      - "27017:27017"
+    
